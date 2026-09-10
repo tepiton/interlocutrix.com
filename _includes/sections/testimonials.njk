@@ -1,0 +1,24 @@
+<style>{% include "css/sections/testimonials.css" %}</style>
+<section id="testimonials" class="section testimonials">
+	<div class="container">
+		<header class="section-head">
+			<h2>{{ section.data.title }}</h2>
+			{%- if section.templateContent and section.templateContent.trim().length %}
+			<div class="section-lede">{{ section.templateContent | safe }}</div>
+			{%- endif %}
+		</header>
+		<ul class="testimonial-grid">
+			{%- for t in section.data.quotes %}
+			<li class="testimonial">
+				<blockquote class="testimonial-quote">
+					<p>{{ t.quote }}</p>
+				</blockquote>
+				<footer class="testimonial-attribution">
+					{%- if t.name %}<span class="testimonial-name">{{ t.name }}</span>{% endif -%}
+					{%- if t.role %}<span class="testimonial-role">{{ t.role }}</span>{% endif -%}
+				</footer>
+			</li>
+			{%- endfor %}
+		</ul>
+	</div>
+</section>

@@ -1,0 +1,42 @@
+<style>{% include "css/sections/contact.css" %}</style>
+<section id="contact" class="section contact-band">
+	<div class="container">
+		<div class="contact-card">
+			<h2 class="contact-heading">{{ section.data.title }}</h2>
+			{%- if section.templateContent and section.templateContent.trim().length %}
+			<div class="contact-lede">{{ section.templateContent | safe }}</div>
+			{%- endif %}
+			<dl class="contact-details">
+				{%- if section.data.email %}
+				<div class="contact-row">
+					<dt>Email</dt>
+					<dd><a href="mailto:{{ section.data.email }}">{{ section.data.email }}</a></dd>
+				</div>
+				{%- endif %}
+				{%- if section.data.phone %}
+				<div class="contact-row">
+					<dt>Phone</dt>
+					<dd><a href="tel:{{ section.data.phone | replace(" ", "") }}">{{ section.data.phone }}</a></dd>
+				</div>
+				{%- endif %}
+				{%- if section.data.location %}
+				<div class="contact-row">
+					<dt>Where</dt>
+					<dd>{{ section.data.location }}</dd>
+				</div>
+				{%- endif %}
+				{%- if section.data.response %}
+				<div class="contact-row">
+					<dt>Response</dt>
+					<dd>{{ section.data.response }}</dd>
+				</div>
+				{%- endif %}
+			</dl>
+			{%- if section.data.cta %}
+			<div class="contact-actions">
+				<a class="button button-large" href="{{ section.data.cta.href }}">{{ section.data.cta.label }}</a>
+			</div>
+			{%- endif %}
+		</div>
+	</div>
+</section>

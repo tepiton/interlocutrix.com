@@ -1,0 +1,20 @@
+<style>{% include "css/sections/process.css" %}</style>
+<section id="process" class="section process">
+	<div class="container">
+		<header class="section-head">
+			<h2>{{ section.data.title }}</h2>
+			{%- if section.templateContent and section.templateContent.trim().length %}
+			<div class="section-lede">{{ section.templateContent | safe }}</div>
+			{%- endif %}
+		</header>
+		<ol class="steps">
+			{%- for step in section.data.steps %}
+			<li class="step">
+				<span class="step-number" aria-hidden="true">{{ loop.index }}</span>
+				<h3>{{ step.title }}</h3>
+				<p>{{ step.description }}</p>
+			</li>
+			{%- endfor %}
+		</ol>
+	</div>
+</section>

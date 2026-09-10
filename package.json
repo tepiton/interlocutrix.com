@@ -1,0 +1,27 @@
+{
+	"name": "eleventy-service",
+	"version": "1.0.0",
+	"description": "A service business landing page template built with Eleventy v3.",
+	"type": "module",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"start": "npx @11ty/eleventy --serve --quiet --port=8091",
+		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=18"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^3.1.0",
+		"@11ty/eleventy-img": "^7.0.0",
+		"@11ty/eleventy-navigation": "^1.0.4",
+		"cross-env": "^7.0.3",
+		"zod": "^3.24.4",
+		"zod-validation-error": "^3.4.1"
+	},
+	"allowScripts": {
+		"sharp@0.33.5": true,
+		"fsevents@2.3.3": true
+	}
+}

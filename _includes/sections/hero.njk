@@ -1,0 +1,33 @@
+<style>{% include "css/sections/hero.css" %}</style>
+<section id="hero" class="section hero">
+	<div class="container">
+		{% if section.data.eyebrow %}<p class="hero-eyebrow">{{ section.data.eyebrow }}</p>{% endif %}
+		<h1 class="hero-headline">{{ section.data.title }}</h1>
+		{%- if section.templateContent and section.templateContent.trim().length %}
+		<div class="hero-subhead">{{ section.templateContent | safe }}</div>
+		{%- endif %}
+		{%- if section.data.primary or section.data.secondary %}
+		<div class="hero-actions">
+			{%- if section.data.primary %}
+			<a class="button button-large" href="{{ section.data.primary.href }}">{{ section.data.primary.label }}</a>
+			{%- endif %}
+			{%- if section.data.secondary %}
+			<a class="button button-large button-ghost" href="{{ section.data.secondary.href }}">{{ section.data.secondary.label }}</a>
+			{%- endif %}
+		</div>
+		{%- endif %}
+		{%- if section.data.image %}
+		<figure class="hero-figure">
+			<img src="{{ section.data.image }}" alt="Product preview" width="1200" height="750" loading="eager" decoding="sync">
+		</figure>
+		{%- endif %}
+		{%- if section.data.logos %}
+		<div class="hero-logos">
+			{%- if section.data.logos_label %}<p class="hero-logos-label">{{ section.data.logos_label }}</p>{% endif %}
+			<ul>
+				{%- for name in section.data.logos %}<li>{{ name }}</li>{% endfor -%}
+			</ul>
+		</div>
+		{%- endif %}
+	</div>
+</section>

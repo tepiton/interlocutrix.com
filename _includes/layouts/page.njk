@@ -1,0 +1,57 @@
+---js
+{
+	layout: "layouts/base.njk"
+}
+---
+<article class="page">
+	<header class="page-hero">
+		<div class="container">
+			{%- if eyebrow %}<p class="page-eyebrow">{{ eyebrow }}</p>{% endif -%}
+			<h1 class="page-title">{{ title or metadata.title }}</h1>
+			{%- if description %}<p class="page-lede">{{ description }}</p>{% endif -%}
+		</div>
+	</header>
+	<div class="container">
+		<div class="page-body{% if wide %} page-body-wide{% endif %}">
+			{%- if stats %}
+			<div class="stat-row">
+				{%- for s in stats %}
+				<div class="stat">
+					<span class="stat-value">{{ s.value }}</span>
+					<span class="stat-label">{{ s.label }}</span>
+				</div>
+				{%- endfor %}
+			</div>
+			{%- endif %}
+			{{ content | safe }}
+			{%- if projects %}
+			<ul class="work-list">
+				{%- for p in projects %}
+				<li class="work-row">
+					<span class="work-client">{{ p.client }}</span>
+					<span class="work-year">{{ p.year }}</span>
+					{%- if p.description %}<p class="work-description">{{ p.description }}</p>{% endif -%}
+					{%- if p.tags %}
+					<div class="work-tags">
+						{%- for t in p.tags %}<span class="tag-chip">{{ t }}</span>{% endfor -%}
+					</div>
+					{%- endif %}
+				</li>
+				{%- endfor %}
+			</ul>
+			{%- endif %}
+			{%- if cards %}
+			<ul class="card-grid page-cards">
+				{%- for c in cards %}
+				<li class="card">
+					{%- if c.icon %}<span class="card-icon" aria-hidden="true">{% include "icons/" + c.icon + ".njk" %}</span>{% endif -%}
+					<h3>{{ c.title }}</h3>
+					<p>{{ c.description }}</p>
+					{%- if c.href %}<a class="card-action" href="{{ c.href }}">{{ c.action or "Learn more" }} &rarr;</a>{% endif -%}
+				</li>
+				{%- endfor %}
+			</ul>
+			{%- endif %}
+		</div>
+	</div>
+</article>

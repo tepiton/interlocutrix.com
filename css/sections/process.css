@@ -1,0 +1,39 @@
+/* Process: numbered steps */
+.steps {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	gap: 1.5rem 2.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.step {
+	position: relative;
+	padding-top: 0.25rem;
+}
+
+.step-number {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+	color: var(--color-accent);
+	font-weight: 700;
+	font-size: 1rem;
+	margin-bottom: 1rem;
+}
+
+.step h3 {
+	font-size: 1.15rem;
+	margin-bottom: 0.5rem;
+}
+
+.step p {
+	color: var(--color-muted);
+	font-size: 0.95rem;
+	margin: 0;
+}

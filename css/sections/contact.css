@@ -1,0 +1,62 @@
+/* Contact: centered card with a definition list of details */
+.contact-band {
+	background:
+		radial-gradient(48rem 24rem at 50% 130%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent);
+}
+
+.contact-card {
+	max-width: var(--container-narrow);
+	margin-inline: auto;
+	text-align: center;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: calc(var(--radius) + 0.25rem);
+	padding: clamp(2rem, 6vw, 3.25rem);
+	box-shadow: var(--shadow-card);
+}
+
+.contact-heading {
+	font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
+}
+
+.contact-lede {
+	color: var(--color-muted);
+	font-size: 1.05rem;
+	max-width: 34rem;
+	margin: 0.8rem auto 1.8rem;
+}
+
+.contact-details {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	margin: 0 0 1.8rem;
+}
+
+.contact-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1.5rem;
+	padding: 0.7rem 0;
+	border-top: 1px solid var(--color-border);
+	text-align: left;
+}
+
+.contact-row dt {
+	color: var(--color-muted);
+	font-size: 0.82rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	flex: none;
+}
+
+.contact-row dd {
+	margin: 0;
+	font-size: 0.95rem;
+}
+
+.contact-actions {
+	margin-top: 0.4rem;
+}

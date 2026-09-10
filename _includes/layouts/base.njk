@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="{{ metadata.language or 'en' }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{ title or metadata.title }}</title>
+	<meta name="description" content="{{ description or metadata.description }}">
+	<link rel="canonical" href="{{ page.url | absoluteUrl(metadata.url) }}">
+
+	<!-- Apply a saved theme preference before first paint. Dark is the default. -->
+	<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("theme");
+				if (t === "light" || t === "dark") {
+					document.documentElement.setAttribute("data-force-theme", t);
+				} else {
+					document.documentElement.removeAttribute("data-force-theme");
+				}
+			} catch (e) { /* private mode: fall back to system */ }
+		})();
+	</script>
+
+	<!-- Fonts: swap these links to change the typefaces, then update --font-* in css/index.css -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+	<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+	<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+	<meta name="theme-color" content="#1a1d23" media="(prefers-color-scheme: dark)">
+	<meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)">
+	<meta name="referrer" content="no-referrer-when-downgrade">
+
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="{{ metadata.title }}">
+	<meta property="og:title" content="{{ title or metadata.title }}">
+	<meta property="og:description" content="{{ description or metadata.description }}">
+	<meta property="og:url" content="{{ page.url | absoluteUrl(metadata.url) }}">
+	{%- if metadata.image %}
+	<meta property="og:image" content="{{ metadata.image | absoluteUrl(metadata.url) }}">
+	{%- endif %}
+	<meta name="twitter:card" content="summary_large_image">
+
+	<style>{% include "css/index.css" %}</style>
+	<style>{% getBundle "css" %}</style>
+</head>
+<body>
+	<a href="#main" id="skip-link" class="visually-hidden">Skip to content</a>
+
+	<header class="site-header">
+		<div class="container site-header-inner">
+			<a href="/" class="home-link">{{ metadata.title }}</a>
+			<nav aria-label="Main navigation">
+				<ul class="nav">
+					{%- for entry in collections.all | eleventyNavigation %}
+					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+					{%- endfor %}
+				</ul>
+			</nav>
+			{%- if metadata.cta %}
+			<a class="button button-small header-cta" href="{{ metadata.cta.href }}">{{ metadata.cta.label }}</a>
+			{%- endif %}
+			<div class="theme-switcher">
+				<button id="theme-toggle" class="theme-toggle" aria-label="Change theme" title="Change theme" aria-haspopup="true" aria-expanded="false">◑</button>
+				<div id="theme-options" class="theme-options">
+					<a href="#" class="theme-option" data-theme="light"><span class="theme-option-icon">☀</span><span>Light</span></a>
+					<a href="#" class="theme-option" data-theme="dark"><span class="theme-option-icon">☽</span><span>Dark</span></a>
+					<a href="#" class="theme-option" data-theme="system"><span class="theme-option-icon">◑</span><span>System</span></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main id="main">
+		{{ content | safe }}
+	</main>
+
+	<footer class="site-footer" role="contentinfo">
+		<div class="container site-footer-inner">
+			<p>
+				<span class="footer-brand">{{ metadata.title }}</span>
+				<span>&copy; {% currentYear %} {{ metadata.author.name }}</span>
+			</p>
+			<p class="footer-links">
+				{%- for entry in collections.all | eleventyNavigation %}
+				<a href="{{ entry.url }}">{{ entry.title }}</a>
+				{%- endfor %}
+			</p>
+		</div>
+	</footer>
+
+	<script type="module" src="/js/theme-switcher.js"></script>
+</body>
+</html>

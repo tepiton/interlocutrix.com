@@ -1,0 +1,20 @@
+<style>{% include "css/sections/services.css" %}</style>
+<section id="services" class="section services">
+	<div class="container">
+		<header class="section-head">
+			<h2>{{ section.data.title }}</h2>
+			{%- if section.templateContent and section.templateContent.trim().length %}
+			<div class="section-lede">{{ section.templateContent | safe }}</div>
+			{%- endif %}
+		</header>
+		<ul class="card-grid">
+			{%- for item in section.data.services %}
+			<li class="card">
+				{%- if item.icon %}<span class="card-icon" aria-hidden="true">{% include "icons/" + item.icon + ".njk" %}</span>{% endif -%}
+				<h3>{{ item.title }}</h3>
+				<p>{{ item.description }}</p>
+			</li>
+			{%- endfor %}
+		</ul>
+	</div>
+</section>

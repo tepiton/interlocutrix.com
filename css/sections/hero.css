@@ -1,0 +1,85 @@
+/* Hero: centered headline over a soft accent glow */
+.hero {
+	text-align: center;
+	padding-top: clamp(4.5rem, 10vw, 7.5rem);
+	background:
+		radial-gradient(56rem 30rem at 50% -12%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent);
+}
+
+.hero-eyebrow {
+	display: inline-block;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--color-accent);
+	border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+	border-radius: 999px;
+	padding: 0.3rem 0.9rem;
+	margin-bottom: 1.4rem;
+}
+
+.hero-headline {
+	max-width: 18ch;
+	margin-inline: auto;
+}
+
+.hero-subhead {
+	color: var(--color-muted);
+	font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem);
+	max-width: 38rem;
+	margin: 1.1rem auto 0;
+	text-wrap: pretty;
+}
+
+.hero-actions {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.85rem;
+	margin-top: 2.1rem;
+}
+
+.hero-figure {
+	margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+	max-width: 56rem;
+}
+
+.hero-figure img {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-card);
+}
+
+.hero-logos {
+	margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero-logos-label {
+	font-size: 0.78rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--color-muted);
+	margin-bottom: 0.9rem;
+}
+
+.hero-logos ul {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1.2rem 2.4rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.hero-logos li {
+	color: var(--color-muted);
+	font-weight: 600;
+	font-size: 0.95rem;
+	letter-spacing: 0.01em;
+	opacity: 0.85;
+}

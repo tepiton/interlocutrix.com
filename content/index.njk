@@ -1,0 +1,10 @@
+---js
+{
+	layout: "layouts/base.njk",
+	permalink: "/",
+	eleventyNavigation: { key: "Home", order: 1 }
+}
+---
+{% for section in collections.sections %}
+{% include "sections/" + section.data.type + ".njk" %}
+{% endfor %}

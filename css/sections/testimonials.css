@@ -1,0 +1,57 @@
+/* Testimonials: quote cards with attributions */
+.testimonial-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+	gap: 1.1rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.testimonial {
+	display: flex;
+	flex-direction: column;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	padding: 1.6rem;
+}
+
+.testimonial-quote {
+	margin: 0 0 1.2rem;
+}
+
+.testimonial-quote p {
+	font-size: 1.02rem;
+	line-height: 1.55;
+	margin: 0;
+	text-wrap: pretty;
+}
+
+.testimonial-quote p::before {
+	content: "\201C";
+	color: var(--color-accent);
+	font-size: 1.6em;
+	line-height: 0;
+	margin-right: 0.08em;
+	vertical-align: -0.3em;
+}
+
+.testimonial-attribution {
+	margin-top: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	border-top: 1px solid var(--color-border);
+	padding-top: 0.9rem;
+}
+
+.testimonial-name {
+	font-weight: 600;
+	font-size: 0.93rem;
+}
+
+.testimonial-role {
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
